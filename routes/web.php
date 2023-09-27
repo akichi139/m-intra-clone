@@ -22,9 +22,9 @@ Route::get('/', [App\Http\Controllers\welcomeController::class, 'render']);
 
 Auth::routes();
 
-Route::resource('product', ProductController::class);
-
 Route::get('/products/{brand?}', [ProductController::class, 'displayBrand'])->name('product.brand');
+Route::get('/products/item/{id}', [ProductController::class, 'displayProduct'])->name('product.item');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [FrontendController::class, 'searchProducts'])->name('search');
 
@@ -42,10 +42,5 @@ Route::get('/test', function () {
 Route::group(['middleware' => ['admin']], function () {
     // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 
-    // Route::get('products', [ProductController::class, 'index'])->name('product.index');
-    // Route::post('products', [ProductController::class, 'store'])->name('product.store');
-    // Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
-    // Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-    // Route::put('products/{product}', [ProductController::class, 'update'])->name('product.update');
-    // Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::resource('product', ProductController::class);
  });

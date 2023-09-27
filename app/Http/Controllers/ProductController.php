@@ -28,6 +28,13 @@ class ProductController extends Controller
         return view('product.brand', compact('products', 'brand'));
     }
 
+    public function displayProduct($id)
+    {
+        $product = Product::find($id);
+
+        return view('product.item', compact('product'));
+    }
+
     public function create()
     {
         $brands = Brand::all();
@@ -53,7 +60,7 @@ class ProductController extends Controller
         $supervise_str = implode(',', $supervise);
 
         $pdf_file = $request->file('pdf_input');
-        $pdf_file->storeAs('pdfs', $pdf_file->getClientOriginalName());
+        $pdf_file->storeAs('public/pdfs', $pdf_file->getClientOriginalName());
 
         $image_file = time() . '.' . $request->image->extension();
         $request->image->storeAs('public/images', $image_file);
@@ -66,7 +73,7 @@ class ProductController extends Controller
         $product->brand_id = $request->brand;
         $product->price = $request->price;
         $product->status = 'new';
-        $product->datasheet = $pdf_file;
+        $product->datasheet = $pdf_file->getClientOriginalName();
         $product->supervise = $supervise_str;
         $product->guarantee = $request->guarantee;
         $product->save();

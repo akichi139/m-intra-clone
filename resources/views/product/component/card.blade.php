@@ -32,13 +32,13 @@
     }
 
     .card::after {
-        content: "ADD TO CART ➜";
+        content: "View Detail ➜";
         padding-top: 1.25em;
         padding-left: 1.25em;
         position: absolute;
         left: 0;
         bottom: 0px;
-        background: linear-gradient(to bottom, rgba(80, 153, 255, 0) , rgba(80, 153, 255, 1));
+        background: linear-gradient(to bottom, rgba(80, 153, 255, 0), rgba(80, 153, 255, 1));
         color: #fff;
         height: 15%;
         width: 100%;
@@ -52,14 +52,16 @@
 </style>
 
 <div class="card mx-auto my-2" style="width: 290px;height: 423px; background-color: #ffffff;">
-    @if($product->status == "new")
-    <div class="ribbon-2">
-        <h6 class="text-white">New</h6>
-    </div>
-    @endif
-    <img class="card-img-top" src="{{ $product->image }}" style="width: 275px;height: 290px;">
-    <div class="card-body">
-        <h5 class="card-title">{{ $product->product_name }}</h5>
-        <p class="card-text fw-bold" style="font-size: 14pt; color: rgb(76, 76, 165);">THB {{ $product->price }}</p>
-    </div>
+    <a href="{{ route('product.item', ['id' => $product->id]) }}">
+        @if($product->status == "new")
+        <div class="ribbon-2">
+            <h6 class="text-white">New</h6>
+        </div>
+        @endif
+        <img class="card-img-top" src="{{ $product->image }}" style="width: 275px;height: 290px;">
+        <div class="card-body">
+            <h5 class="card-title">{{ $product->product_name }}</h5>
+            <p class="card-text fw-bold" style="font-size: 14pt; color: rgb(76, 76, 165);">THB {{ $product->price }}</p>
+        </div>
+    </a>
 </div>
