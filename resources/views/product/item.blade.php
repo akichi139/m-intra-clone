@@ -94,15 +94,15 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ $product->image }}" class="d-block w-100"
+                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $product->image }}" class="d-block w-100"
+                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ $product->image }}" class="d-block w-100"
+                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                             </div>
@@ -110,22 +110,25 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center mb-3">
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1" style="border-radius: 50%;">
-                            <img class="img-fluid" src="#" style="height: 25px; width: 25px;">
+                            class="active mx-2" aria-current="true" aria-label="Slide 1" style="border-radius: 50%;">
+                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                                style="border-radius: 50%;height: 40px; width: 40px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1"
-                            aria-label="Slide 2" style="border-radius: 50%;">
-                            <img class="img-fluid" src="#">
+                            aria-label="Slide 2" style="border-radius: 50%;" class="mx-2">
+                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                                style="border-radius: 50%;height: 40px; width: 40px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2"
-                            aria-label="Slide 3" style="border-radius: 50%;">
-                            <img class="img-fluid" src="#">
+                            aria-label="Slide 3" style="border-radius: 50%;" class="mx-2">
+                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                                style="border-radius: 50%;height: 40px; width: 40px;">
                         </button>
                     </div>
                 </div>
             </div>
             <div class="col-8 mb-2">
-                <span class="my-2" style="color: #b5b5b5;">Brand : {{$product->brand->brand_name}}</span>
+                <span class="my-2">Brand : {{$product->brand->brand_name}}</span>
                 <div class="title my-2">
                     <h1>{{$product->product_name}}</h1>
                     <span>ID: {{$product->product_id}}</span>
@@ -144,17 +147,51 @@
                     <h6>Guarantee: {{$product->guarantee}}</h6>
                     <h6>Supervise: {{$product->supervise}}</h6>
                 </div>
-                <button class="buy--btn">ADD TO CART</button>
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" type="button" id="minusBtn">-</button>
+                    <input type="text" class="form-control text-center" id="counterInput" name="counterInput" value="1" style="max-width: 50px;">
+                    <button class="btn btn-outline-secondary" type="button" id="plusBtn">+</button>
+                </div>
+                <button class="buy--btn mt-4">ADD TO CART</button>
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card my-2">
         <div class="row d-flex justify-content-center">
             <h2 class="col-12 d-flex justify-content-center">Data Sheet</h2>
             <iframe src="{{ asset('storage/pdfs/' . $product->datasheet) }}" width="50%" height="600"></iframe>
-            <a class="btn btn-primary my-2 col-12" href="{{ asset('storage/pdfs/' . $product->datasheet) }}" target="_blank" style="max-width: 50%;">Download PDF</a>
+            <a class="btn btn-primary my-2 col-12" href="{{ asset('storage/pdfs/' . $product->datasheet) }}"
+                target="_blank" style="max-width: 50%;">Download PDF</a>
         </div>
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const counterInput = document.getElementById('counterInput');
+        const plusBtn = document.getElementById('plusBtn');
+        const minusBtn = document.getElementById('minusBtn');
+
+        plusBtn.addEventListener('click', function () {
+            counterInput.value = parseInt(counterInput.value) + 1;
+            updateButtonState();
+        });
+
+        minusBtn.addEventListener('click', function () {
+            counterInput.value = parseInt(counterInput.value) - 1;
+            updateButtonState();
+        });
+
+        function updateButtonState() {
+            const currentValue = parseInt(counterInput.value);
+            if (currentValue <= 1) {
+                minusBtn.disabled = true;
+            } else {
+                minusBtn.disabled = false;
+            }
+        }
+
+        updateButtonState();
+    });
+</script>
 @endsection
