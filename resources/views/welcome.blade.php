@@ -1,45 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .media-scroller {
-        --_spacer: var(--size-3);
-        display: grid;
-        gap: var(--_spacer);
-        grid-auto-flow: column;
-        grid-auto-columns: 27%;
-
-        padding: 0 var(--_spacer) var(--_spacer);
-
-        overflow-x: auto;
-        overscroll-behavior-inline: contain;
-    }
-
-    .snaps-inline {
-        scroll-snap-type: inline mandatory;
-        scroll-padding-inline: var(--_spacer, 1rem);
-    }
-
-    .snaps-inline>* {
-        scroll-snap-align: start;
-    }
-
-    .media-scroller::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background-color: #F5F5F5;
-        border-radius: 10px;
-    }
-
-    .media-scroller::-webkit-scrollbar {
-        height: 10px;
-        background-color: #F5F5F5;
-    }
-
-    .media-scroller::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: #5099ff;
-    }
-</style>
 
 <div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-indicators">
@@ -50,7 +11,7 @@
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
             aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="z-index: -1;">
         <div class="carousel-item active">
             <img src="https://www.measuretronix.com/images/banner/crop-1691131280239.jpg" class="d-block w-100"
                 alt="...">

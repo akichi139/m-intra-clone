@@ -19,6 +19,21 @@
   }
 </style>
 
+@php
+$brands = Cache::pull('brands');
+$categories = Cache::pull('categories');
+@endphp
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Your Brand</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- Use your menu macro here -->
+    {!! Menu::main($brands, $categories) !!}
+  </div>
+</nav>
+
 <div class="card mx-auto my-2" style="width: 290px;height: 423px; background-color: #ffffff;border-radius: 10px;">
   Card Content
   <div class="card-buttons">

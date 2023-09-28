@@ -213,6 +213,11 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        @php
+        $brands = Cache::pull('brands');
+        $categories = Cache::pull('categories');
+        @endphp
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav ms-2">
@@ -226,67 +231,9 @@
                 BRAND
               </a>
               <ul class="dropdown-menu brand" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Amprobe'])}}">Amprobe</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Andeen-Hagerling'])}}">Andeen-Hagerling</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'AOK'])}}">AOK</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Battery-Metric'])}}">Battery Metric (Lamantia)</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'BC-Biomedical'])}}">BC Biomedical</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Bird'])}}">Bird</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'BK Precision/Sefram'])}}">BK Precision/Sefram</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Bruel&Kjaer'])}}">Bruel & Kjaer</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Clare'])}}">Clare (seaward)</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Comark'])}}">Comark</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'CTRL-Systems'])}}">CTRL Systems</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Delta'])}}">Delta</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'EA-Technology'])}}">EA Technology</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Emazys'])}}">Emazys</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Engineer'])}}">Engineer</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'FW-Bell'])}}">F.W. Bell</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Fluke'])}}">Fluke</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Fluke Calibration'])}}">Fluke Calibration</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Gossen Metrawatt'])}}">Gossen Metrawatt</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'GW Instek'])}}">GW Instek</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Haltech'])}}">Haltech</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Hikmicro'])}}">Hikmicro</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Huntron'])}}">Huntron</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'IET-Labs'])}}">IET Labs</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'IMT-Analytics'])}}">IMT Analytics</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Jensen'])}}">Jensen</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Joinwit'])}}">Joinwit</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Kanomax'])}}">Kanomax</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'LabSat'])}}">LabSat</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Lansmont'])}}">Lansmont</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'LCR-Research'])}}">LCR Research</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'LDS'])}}">LDS</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Leyro'])}}">Leyro</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Luciol'])}}">Luciol</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Metrel'])}}">Metrel</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Micronix'])}}">Micronix</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'NetAlly'])}}">NetAlly</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Pace'])}}">Pace</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Pendulum'])}}">Pendulum</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Polytec'])}}">Polytec</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Pomona'])}}">Pomona</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Preen'])}}">Preen</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Prodigit'])}}">Prodigit</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Promax'])}}">Promax</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Radian Research'])}}">Radian Research</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Radiodetection'])}}">Radiodetection</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Reed'])}}">Reed</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Rigel-Medical'])}}">Rigel Medical</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'RigExpert'])}}">RigExpert</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Seaward'])}}">Seaward</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Silverado'])}}">Silverado</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Silvertronic'])}}">Silvertronic</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Sonic'])}}">Sonic</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Sorensen'])}}">Sorensen (Ametek)</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Thunder-Scientific'])}}">Thunder Scientific</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'TPI'])}}">TPI</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Tunkia'])}}">Tunkia</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Vaisala'])}}">Vaisala</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'Wanglu'])}}">Wanglu</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'WENS'])}}">WENS</a></li>
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => 'XEDA'])}}">XEDA</a></li>
+                @foreach($brands as $brand)
+                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => '$brand->brand_name'])}}">{{$brand->brand_name}}</a></li>
+                @endforeach
                 <li><a class="dropdown-item" href="{{route('brand')}}">See All Brands</a></li>
               </ul>
             </li>

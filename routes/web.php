@@ -18,7 +18,7 @@ use App\Models\Brand;
 |
 */
 
-Route::get('/', [App\Http\Controllers\welcomeController::class, 'render']);
+Route::get('/', [App\Http\Controllers\welcomeController::class, 'render'])->name('welcome');
 
 Auth::routes();
 
@@ -38,6 +38,11 @@ Route::get('/test', function () {
     $brand = Brand::find(1);
     return view('test', compact('brand'));
 });
+
+Route::get('/promotion', [CategoryController::class, 'index'])->name('promotion');
+Route::get('/repairandcal', [CategoryController::class, 'index'])->name('repairandcal');
+Route::get('/quatation', [CategoryController::class, 'index'])->name('quatation');
+Route::get('/aboutus', [CategoryController::class, 'index'])->name('aboutus');
 
 Route::group(['middleware' => ['admin']], function () {
     // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
