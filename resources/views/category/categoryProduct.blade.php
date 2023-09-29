@@ -13,8 +13,6 @@
 </style>
 
 <div class="mx-auto" style="max-width: 80%;">
-    <img src="{{ $brand_name->logo }}" style="width: 200px;height: 100px;">
-    <hr>
     <div class="row">
         <div class="col-3">
             @include('brand.component.sidebar')

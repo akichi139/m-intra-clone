@@ -202,15 +202,15 @@
       </ul>
     </div>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
           <img src="https://v4i.rweb-images.com/www.measuretronix.com/images/logo/large-1658484550269.png"
             style="width:200px;height:50px;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarCenteredExample"
+          aria-controls="navbarCenteredExample" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
         </button>
 
         @php
@@ -218,9 +218,9 @@
         $categories = Cache::pull('categories');
         @endphp
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
           <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav ms-2">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{ url('/') }}">HOME</a>
             </li>
@@ -232,7 +232,9 @@
               </a>
               <ul class="dropdown-menu brand" aria-labelledby="navbarDropdown">
                 @foreach($brands as $brand)
-                <li><a class="dropdown-item" href="{{route('brand_product', ['brand_name' => '$brand->brand_name'])}}">{{$brand->brand_name}}</a></li>
+                <li><a class="dropdown-item"
+                    href="{{route('brand_product', ['brand_name' => '$brand->brand_name'])}}">{{$brand->brand_name}}</a>
+                </li>
                 @endforeach
                 <li><a class="dropdown-item" href="{{route('brand')}}">See All Brands</a></li>
               </ul>
@@ -536,49 +538,70 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                REPAIR & CALIBRATION
+                OTHER SERVICE
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Repair</a></li>
+                <li><a class="dropdown-item" href="#">Calibration</a></li>
+                <li><a class="dropdown-item" href="#">Quatation</a></li>
+                <li><a class="dropdown-item" href="#">Demonstration</a></li>
               </ul>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">QUATATION & DEMONSTRATION</a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link" href="#">ABOUT US</a>
             </li>
           </ul>
+        </div>
 
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCenteredExample">
           <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <!-- Authentication Links -->
             <li class="nav-item">
               <form action="{{ url('search') }}" method="get" role="search">
                 <div class="input-group">
-                  <input class="form-control me-2" type="search" name="search" value="" placeholder="Search" aria-label="Search">
+                  <input class="form-control me-2" type="search" name="search" value="" placeholder="Search"
+                    aria-label="Search" style="max-width: 100px;">
                 </div>
               </form>
             </li>
-            @guest
-            @if (Route::has('login'))
+
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" data-bs-display="static" v-pre>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                </svg>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <div class="card">
+                  @livewire('cart-component')
+                </div>
+              </div>
+            </li>
+
+            @guest
+            @if (Route::has('login') && Route::has('register'))
+            <li class="nav-item dropdown-auth">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" data-bs-display="static" v-pre>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </div>
             </li>
             @endif
 
-            @if (Route::has('register'))
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-            </li>
-            @endif
             @else
             <li class="nav-item dropdown-auth">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -591,16 +614,11 @@
                                                      document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                 </a>
-                
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
                 </form>
 
-                <a class="dropdown-item" href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                  </svg>
-                </a>
               </div>
             </li>
             @endguest
@@ -710,17 +728,19 @@
           </li>
           <li>
             <a class="tt" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
-                <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-tiktok"
+                viewBox="0 0 16 16">
+                <path
+                  d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
               </svg>
             </a>
           </li>
           <li>
             <a class="geo" href="#">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-              class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-            </svg>
+                class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+              </svg>
             </a>
           </li>
         </ul>

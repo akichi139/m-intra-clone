@@ -147,12 +147,8 @@
                     <h6>Guarantee: {{$product->guarantee}}</h6>
                     <h6>Supervise: {{$product->supervise}}</h6>
                 </div>
-                <div class="input-group">
-                    <button class="btn btn-outline-secondary" type="button" id="minusBtn">-</button>
-                    <input type="text" class="form-control text-center" id="counterInput" name="counterInput" value="1" style="max-width: 50px;">
-                    <button class="btn btn-outline-secondary" type="button" id="plusBtn">+</button>
-                </div>
-                <button class="buy--btn mt-4">ADD TO CART</button>
+                @livewire('add-item-to-cart', ['product_id' => $product->product_id, 'product_name' =>
+                $product->product_name, 'product_price' => $product->price])
             </div>
         </div>
     </div>
@@ -166,32 +162,4 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const counterInput = document.getElementById('counterInput');
-        const plusBtn = document.getElementById('plusBtn');
-        const minusBtn = document.getElementById('minusBtn');
-
-        plusBtn.addEventListener('click', function () {
-            counterInput.value = parseInt(counterInput.value) + 1;
-            updateButtonState();
-        });
-
-        minusBtn.addEventListener('click', function () {
-            counterInput.value = parseInt(counterInput.value) - 1;
-            updateButtonState();
-        });
-
-        function updateButtonState() {
-            const currentValue = parseInt(counterInput.value);
-            if (currentValue <= 1) {
-                minusBtn.disabled = true;
-            } else {
-                minusBtn.disabled = false;
-            }
-        }
-
-        updateButtonState();
-    });
-</script>
 @endsection
