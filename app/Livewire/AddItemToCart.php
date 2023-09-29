@@ -41,6 +41,7 @@ class AddItemToCart extends Component
         Cart::add($this->product_id, $this->product_name, $this->quantity, $this->product_price)->associate('\App\Models\Product');
         session()->flash('success','Item added in Cart');
         $this->reset('quantity');
+        $this->dispatch('itemAddedToCart');
     }
 
     public function render()

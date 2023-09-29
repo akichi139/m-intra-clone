@@ -577,9 +577,7 @@
                 </svg>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <div class="card">
                   @livewire('cart-component')
-                </div>
               </div>
             </li>
 
