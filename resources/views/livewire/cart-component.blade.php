@@ -10,7 +10,7 @@
                                 <h6 class="mb-0 text-muted">{{ $this->getTotalCartItems() }} items</h6>
                             </div>
                             <hr class="my-4">
-                            <div class="overflow-auto" style="max-height: 500px;">
+                            <div class="overflow-auto" style="max-height: 400px;">
                                 @foreach($this->getCartItems() as $item)
                                 <div class="card mb-3">
                                     <div class="card-body">
@@ -23,7 +23,7 @@
                                                 </div>
                                                 <div class="ms-3">
                                                     <h5>{{ $item->name }}</h5>
-                                                    <p class="small mb-0">256GB, Navy Blue</p>
+                                                    <p class="small mb-0">{{ $item->id }}</p>
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-row align-items-center">
@@ -52,17 +52,17 @@
 
                     <div class="col-lg-5 text-white" style="background-color: gray; border-radius: 5px;">
                         <div class="p-5">
-                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                            <h3 class="fw-bold mt-2 pt-1">Summary</h3>
                             <hr class="my-4">
 
-                            <div class="d-flex justify-content-between mb-4">
+                            <div class="d-flex justify-content-between mb-2">
                                 <h5 class="text-uppercase">items {{ $this->getTotalCartItems() }}</h5>
                                 <h5>THB {{ $this->getSubTotalPrice() }}</h5>
                             </div>
 
-                            <h5 class="text-uppercase mb-3">Promotion</h5>
+                            <h5 class="text-uppercase mb-2">Promotion</h5>
 
-                            <div class="mb-4 pb-2">
+                            <div class="mb-2 pb-2">
                                 <select class="select">
                                     <option value="1">one</option>
                                     <option value="2">Two</option>
@@ -71,7 +71,7 @@
                                 </select>
                             </div>
 
-                            <h5 class="text-uppercase mb-3">Give code</h5>
+                            <h5 class="text-uppercase mb-2">Give code</h5>
 
                             <div class="form-outline">
                                 <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
@@ -85,7 +85,7 @@
 
                             <hr class="my-4">
 
-                            <div class="d-flex justify-content-between mb-5">
+                            <div class="d-flex justify-content-between mb-4">
                                 <h5 class="text-uppercase">Total price</h5>
                                 <h5>THB {{ $this->getTotalPrice() }}</h5>
                             </div>
