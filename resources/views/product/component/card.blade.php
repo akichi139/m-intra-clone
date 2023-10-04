@@ -18,7 +18,7 @@
         box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
     }
 
-    .card {
+    .card-product {
         transition: all 03.s;
         position: relative;
         width: 290px;
@@ -27,7 +27,7 @@
         border-radius: 10px;
     }
 
-    .card:hover {
+    .card-product:hover {
         transform: scale(1.02);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
@@ -43,7 +43,7 @@
         width: 100%;
     }
 
-    .card:hover .card-buttons {
+    .card-product:hover .card-buttons {
         opacity: 1;
         margin-right: auto;
     }
@@ -53,7 +53,7 @@
     }
 </style>
 
-<div class="card mx-auto my-2">
+<div class="card-product mx-auto my-2">
     @if($product->status == "new")
     <div class="ribbon-2">
         <h6 class="text-white">New</h6>
@@ -61,7 +61,7 @@
     @endif
     <img class="card-img-top" src="{{ asset('storage/images/' . $product->image) }}"
         style="width: 275px;height: 290px; background-color: transparent;">
-    <div class="card-body">
+    <div class="card-body mx-3">
         <h5 class="card-title">{{ $product->product_name }}</h5>
         <p class="card-text fw-bold" style="font-size: 14pt; color: rgb(76, 76, 165);">THB {{ $product->price }}</p>
     </div>

@@ -24,11 +24,11 @@ class NavServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Cache::rememberForever('brands', function () {
+        Cache::remember('brands',86400, function () {
             return Brand::all();
         });
 
-        Cache::rememberForever('categories', function () {
+        Cache::remember('categories',86400, function () {
             return Category::all();
         });
     }

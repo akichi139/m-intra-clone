@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SaleOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
@@ -48,4 +49,10 @@ Route::group(['middleware' => ['admin']], function () {
     // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 
     Route::resource('product', ProductController::class);
+ });
+
+ Route::group(['middleware' => ['auth']], function () {
+    Route::get('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');
+
+    Route::resource('saleOrder', SaleOrderController::class);
  });

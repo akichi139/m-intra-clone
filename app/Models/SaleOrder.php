@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Kalnoy\Nestedset\NodeTrait;
 
-class Category extends Model
+class SaleOrder extends Model
 {
     use HasFactory;
-    use NodeTrait;
 
     protected $guarded = [];
-    public function products()
+    public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class, 'product_saleorder');
     }
 }

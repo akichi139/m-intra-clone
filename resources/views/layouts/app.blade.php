@@ -204,14 +204,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="https://v4i.rweb-images.com/www.measuretronix.com/images/logo/large-1658484550269.png"
-            style="width:200px;height:50px;">
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarCenteredExample"
-          aria-controls="navbarCenteredExample" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+        <div class="collapse navbar-collapse justify-content-start">
+          <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="https://v4i.rweb-images.com/www.measuretronix.com/images/logo/large-1658484550269.png"
+              style="width:200px;height:50px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#navbarCenteredExample" aria-controls="navbarCenteredExample" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
 
         @php
         $brands = Cache::pull('brands');
@@ -233,7 +236,7 @@
               <ul class="dropdown-menu brand" aria-labelledby="navbarDropdown">
                 @foreach($brands as $brand)
                 <li><a class="dropdown-item"
-                    href="{{route('brand_product', ['brand_name' => '$brand->brand_name'])}}">{{$brand->brand_name}}</a>
+                    href="{{route('brand_product', ['brand_name' => $brand->brand_name])}}">{{$brand->brand_name}}</a>
                 </li>
                 @endforeach
                 <li><a class="dropdown-item" href="{{route('brand')}}">See All Brands</a></li>
@@ -577,7 +580,7 @@
                 </svg>
               </a>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  @livewire('cart-component')
+                @livewire('cart-component')
               </div>
             </li>
 

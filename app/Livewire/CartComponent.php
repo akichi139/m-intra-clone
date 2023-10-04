@@ -31,6 +31,14 @@ class CartComponent extends Component
         $this->dispatch('itemAddedToCart');
     }
 
+    public function getSubTotalPrice(){
+        return Cart::subtotal();
+    }
+
+    public function getTax(){
+        return Cart::tax();
+    }
+
     public function getTotalPrice()
     {
         return Cart::total();

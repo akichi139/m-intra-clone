@@ -57,7 +57,7 @@
 
                             <div class="d-flex justify-content-between mb-4">
                                 <h5 class="text-uppercase">items {{ $this->getTotalCartItems() }}</h5>
-                                <h5>THB {{ $this->getTotalPrice() }}</h5>
+                                <h5>THB {{ $this->getSubTotalPrice() }}</h5>
                             </div>
 
                             <h5 class="text-uppercase mb-3">Promotion</h5>
@@ -73,11 +73,14 @@
 
                             <h5 class="text-uppercase mb-3">Give code</h5>
 
-                            <div class="mb-5">
-                                <div class="form-outline">
-                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Examplea2">Enter your code</label>
-                                </div>
+                            <div class="form-outline">
+                                <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                                <label class="form-label" for="form3Examplea2">Enter your code</label>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-2">
+                                <h6 style="color: #fff;">tax :7%</h6>
+                                <h6 style="color: #fff;">{{ $this->getTax() }}</h6>
                             </div>
 
                             <hr class="my-4">
@@ -88,7 +91,8 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <a href="{{ route('login') }}" type="button" class="btn btn-dark btn-block btn-lg">
+                                <a href="{{ route('auth_saleOrder') }}" type="button"
+                                    class="btn btn-dark btn-block btn-lg">
                                     Check Out →
                                 </a>
                             </div>
