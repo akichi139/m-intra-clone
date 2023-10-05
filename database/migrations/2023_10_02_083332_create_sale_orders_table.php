@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('sale_orders', function (Blueprint $table) {
             $table->id();
             $table->json('cart_content')->nullable();
+            $table->string('payment_type');
+            $table->string('promo_code');
             $table->integer('status');
+            $table->integer('cart_item');
+            $table->float('subtotal');
+            $table->float('tax');
             $table->float('total');
             $table->bigInteger('user_id');
             $table->timestamps();

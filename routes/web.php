@@ -52,7 +52,8 @@ Route::group(['middleware' => ['admin']], function () {
  });
 
  Route::group(['middleware' => ['auth']], function () {
-    Route::get('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');
+    Route::post('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');
+    Route::get('/comfirmSaleOrder/{saleOrderId}', [SaleOrderController::class, 'ConfirmSaleOrder'])->name('confirm_saleOrder');
 
     Route::resource('saleOrder', SaleOrderController::class);
  });

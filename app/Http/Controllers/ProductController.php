@@ -32,7 +32,9 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        return view('product.item', compact('product'));
+        $anotherProduct = Product::where('category_id', $product->category_id)->take(16)->get();
+
+        return view('product.item', compact('product','anotherProduct'));
     }
 
     public function create()

@@ -67,8 +67,8 @@
     }
 
     .like svg {
-        height: 25px;
-        width: 25px;
+        height: 35px;
+        width: 35px;
         transition: all 0.3s;
         fill: #666;
     }
@@ -113,12 +113,7 @@
                 class="bi bi-info-circle-fill" viewBox="0 0 16 16" style="color: #fff;">
                 <path
                     d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-            </svg> Information</a>
-        <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-share-fill"
-                viewBox="0 0 16 16" style="color: #146aff;">
-                <path
-                    d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
-            </svg></a>
+            </svg> Information
+        </a>
     </div>
 </div>

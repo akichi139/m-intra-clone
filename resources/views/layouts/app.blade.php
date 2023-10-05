@@ -681,7 +681,6 @@
           <li><a href="#">รายละเอียดบริษัท</a></li>
           <li><a href="#">ตัวแทนจำหน่าย</a></li>
           <li><a href="#">ข้อเสนอแนะ</a></li>
-          <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
           <li><a href="#">สมัครงาน</a></li>
         </ul>
       </div>
@@ -700,8 +699,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-6 col-xs-12">
-        <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
-          <a href="#">Scanfcode</a>.
+        <p class="copyright-text">Copyright &copy; 2008 Measuretronix |
+          <a href="#">privacy policy</a>
         </p>
       </div>
 

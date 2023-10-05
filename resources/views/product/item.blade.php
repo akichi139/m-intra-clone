@@ -18,7 +18,7 @@
     }
 
     .price {
-        margin: 1.5em 0;
+        margin: 10px 0;
         color: #ff3f40;
         font-size: 1.2em;
 
@@ -69,29 +69,10 @@
 <div class="mx-auto" style="max-width: 80%;">
     <div class="card">
         <div class="row">
-            <div class="card col-4" style="background-color: #aed0ff;">
+            <div class="col-4">
                 <div class="row">
-                    <div class="col-2 d-flex justify-content-center my-2">
-                        <div id="share">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-share" viewBox="0 0 16 16" style="color: #fff;">
-                                <path
-                                    d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="col-8 d-flex justify-content-center my-2"></div>
-                    <div class="col-2 d-flex justify-content-center my-2">
-                        <div id="star">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-star" viewBox="0 0 16 16" style="color: #fff;">
-                                <path
-                                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
-                            </svg>
-                        </div>
-                    </div>
                     <div class="col-12 mb-2">
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div id="carouselExampleControls" class="carousel slide mx-5" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
@@ -108,21 +89,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center mb-3">
+                    <div class="col-1 d-flex justify-content-start">
+                        <button class="btn btn-secondary" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="col-10 d-flex justify-content-center mb-3">
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0"
-                            class="active mx-2" aria-current="true" aria-label="Slide 1" style="border-radius: 50%;">
+                            class="active mx-2" aria-current="true" aria-label="Slide 1" style="border-radius: 5px;">
                             <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
-                                style="border-radius: 50%;height: 40px; width: 40px;">
+                                style="border-radius: 50%;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1"
-                            aria-label="Slide 2" style="border-radius: 50%;" class="mx-2">
+                            aria-label="Slide 2" style="border-radius: 5px;" class="mx-2">
                             <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
-                                style="border-radius: 50%;height: 40px; width: 40px;">
+                                style="border-radius: 50%;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2"
-                            aria-label="Slide 3" style="border-radius: 50%;" class="mx-2">
+                            aria-label="Slide 3" style="border-radius: 5px;" class="mx-2">
                             <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
-                                style="border-radius: 50%;height: 40px; width: 40px;">
+                                style="border-radius: 50%;height: 70px; width: 70px;">
+                        </button>
+                    </div>
+                    <div class="col-1 d-flex justify-content-end">
+                        <button class="btn btn-secondary" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span>
                         </button>
                     </div>
                 </div>
@@ -158,6 +150,37 @@
             <iframe src="{{ asset('storage/pdfs/' . $product->datasheet) }}" width="50%" height="600"></iframe>
             <a class="btn btn-primary my-2 col-12" href="{{ asset('storage/pdfs/' . $product->datasheet) }}"
                 target="_blank" style="max-width: 50%;">Download PDF</a>
+        </div>
+    </div>
+    <h2>สินค้าประเภทเดียวกัน</h2>
+    <div class="card my-2">
+        <div class="row">
+            <div class="col-1 d-flex justify-content-start">
+                <button class="btn btn-secondary" type="button" data-bs-target="#carouselProductControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-10">
+                <div id="carouselProductControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach($anotherProduct->chunk(4) as $index => $chunk)
+                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                            <div class="row">
+                                @foreach($chunk as $product)
+                                @include('product.component.card')
+                                @endforeach
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 d-flex justify-content-end">
+                <button class="btn btn-secondary" type="button" data-bs-target="#carouselProductControls"
+                    data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

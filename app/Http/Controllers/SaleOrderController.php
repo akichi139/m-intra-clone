@@ -21,8 +21,7 @@ class SaleOrderController extends Controller
      */
     public function create()
     {
-        $cartContents = Cart::content();
-        return view('saleOrder.create', compact('cartContents'));
+        //
     }
 
     /**
@@ -65,8 +64,19 @@ class SaleOrderController extends Controller
         //
     }
 
-    public function cartToSaleOrder()
+    public function ConfirmSaleOrder($saleOrderId)
     {
+        $saleOrder = SaleOrder::find($saleOrderId);
+
+        return view('saleOrder.confirm', compact('saleOrder'));
+    }
+
+    public function cartToSaleOrder(Request $request)
+    {
+        $request->validate([
+            'payment_type' => 'required|string',
+        ]);
+
         $cart_content = [];
 
         foreach (Cart::content() as $item) {
@@ -79,15 +89,18 @@ class SaleOrderController extends Controller
             ];
         }
 
-        SaleOrder::create([
+        $saleOrder = SaleOrder::create([
             'cart_content' => json_encode($cart_content),
+            'payment_type' => $request->input('payment_type'),
+            'promo_code' => $request->input('promotion_code') ?? '-',
             'status' => 0,
+            'cart_item' => Cart::count(),
+            'subTotal' => Cart::subtotal(2, '.', ''),
+            'tax' => Cart::Tax(2, '.', ''),
             'total' => Cart::total(2, '.', ''),
             'user_id' => auth()->user()->id,
         ]);
 
-        Cart::destroy();
-
-        return redirect()->route('welcome');
+        return redirect()->route('confirm_saleOrder', ['saleOrderId' => $saleOrder->id]);
     }
 }

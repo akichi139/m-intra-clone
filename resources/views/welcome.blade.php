@@ -52,19 +52,11 @@
 
     <div class="row">
         <div class="col-1 d-flex justify-content-start">
-            <button class="btn btn-primary" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">⟵
+            <button class="btn btn-secondary" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span>
             </button>
         </div>
-        <div class="col-10 d-flex justify-content-center">
-            <h4 class="category-section-title fw-bold" style="color: #5099ff;">New Product</h4>
-        </div>
-        <div class="col-1 d-flex justify-content-end">
-            <button class="btn btn-primary" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">⟶
-            </button>
-        </div>
-        <div class="col-12">
+        <div class="col-10">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     @foreach($products->chunk(4) as $index => $chunk)
@@ -78,6 +70,11 @@
                     @endforeach
                 </div>
             </div>
+        </div>
+        <div class="col-1 d-flex justify-content-end">
+            <button class="btn btn-secondary" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
 </div>
