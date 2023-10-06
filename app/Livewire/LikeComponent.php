@@ -6,46 +6,43 @@ use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Attributes\On;
 
-class CartComponent extends Component
+class LikeComponent extends Component
 {
-    
-    #[On('itemAddedToCart')]
+    #[On('updatelike')]
     public function refresh(){
         $this->getCartItems();
     }
-
     public function getCartItems()
     {
-        return Cart::instance("cart")->content();
+        return Cart::instance('like')->content();
     }
 
     public function getTotalCartItems()
     {
-        return Cart::instance("cart")->count();
+        return Cart::instance('like')->count();
     }
 
     public function removeFromCart($rowId)
     {
-        Cart::instance("cart")->remove($rowId);
+        Cart::instance('like')->remove($rowId);
         session()->flash('success', 'Item removed from Cart');
         $this->dispatch('itemAddedToCart');
     }
 
     public function getSubTotalPrice(){
-        return Cart::instance("cart")->subtotal();
+        return Cart::instance('like')->subtotal();
     }
 
     public function getTax(){
-        return Cart::instance("cart")->tax();
+        return Cart::instance('like')->tax();
     }
 
     public function getTotalPrice()
     {
-        return Cart::instance("cart")->total();
+        return Cart::instance('like')->total();
     }
-
     public function render()
     {
-        return view('livewire.cart-component');
+        return view('livewire.like-component');
     }
 }

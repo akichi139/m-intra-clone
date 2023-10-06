@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <a href="{{ route('auth_saleOrder') }}" type="button"
+                                <a href="{{ route('destroy_cart') }}" type="button"
                                     class="btn btn-dark btn-block btn-lg">
                                     Confirm Sale Order
                                 </a>

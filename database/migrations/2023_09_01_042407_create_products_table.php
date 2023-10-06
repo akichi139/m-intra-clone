@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string("product_id");
             $table->string("product_name");
-            $table->text("image");
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
             $table->float("price");
             $table->string("status");
-            $table->string("datasheet");
             $table->string("supervise");
             $table->integer("guarantee");
             $table->timestamps();

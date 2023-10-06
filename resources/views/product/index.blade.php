@@ -32,12 +32,16 @@
             <tr>
                 <td>{{$product->product_id}}</td>
                 <td>{{$product->product_name}}</td>
-                <td><img src="{{$product->image}}" alt="Girl in a jacket" width="100" height="100"></td>
+                <td>
+                    <img src="{{ $product->getMedia('productImages')->first()->getUrl() }}" width="100" height="100">
+                </td>
                 <td>{{$product->Category->categories_name}}</td>
                 <td>{{$product->brand->brand_name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->status}}</td>
-                <td>{{$product->datasheet}}</td>
+                <td>
+                    <a href="{{ $product->getMedia('productDataSheet')->first()->getUrl() }}" target="_blank">View PDF</a>
+                </td>
                 <td>{{$product->supervise}}</td>
                 <td>{{$product->guarantee}}</td>
                 <td>

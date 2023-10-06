@@ -153,7 +153,7 @@
         </div>
     </div>
     <h2>สินค้าประเภทเดียวกัน</h2>
-    <div class="card my-2">
+    <div class="my-2">
         <div class="row">
             <div class="col-1 d-flex justify-content-start">
                 <button class="btn btn-secondary" type="button" data-bs-target="#carouselProductControls"

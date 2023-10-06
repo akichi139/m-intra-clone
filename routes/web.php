@@ -19,6 +19,8 @@ use App\Models\Brand;
 |
 */
 
+Route::resource('product', ProductController::class);
+
 Route::get('/', [App\Http\Controllers\welcomeController::class, 'render'])->name('welcome');
 
 Auth::routes();
@@ -40,6 +42,10 @@ Route::get('/test', function () {
     return view('test', compact('brand'));
 });
 
+Route::get('/information', function () {
+    return view('about.information');
+})->name('information');
+
 Route::get('/promotion', [CategoryController::class, 'index'])->name('promotion');
 Route::get('/repairandcal', [CategoryController::class, 'index'])->name('repairandcal');
 Route::get('/quatation', [CategoryController::class, 'index'])->name('quatation');
@@ -48,12 +54,13 @@ Route::get('/aboutus', [CategoryController::class, 'index'])->name('aboutus');
 Route::group(['middleware' => ['admin']], function () {
     // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 
-    Route::resource('product', ProductController::class);
+    // Route::resource('product', ProductController::class);
  });
 
  Route::group(['middleware' => ['auth']], function () {
     Route::post('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');
     Route::get('/comfirmSaleOrder/{saleOrderId}', [SaleOrderController::class, 'ConfirmSaleOrder'])->name('confirm_saleOrder');
+    Route::get('/destroy_cart', [SaleOrderController::class, 'DestroyCart'])->name('destroy_cart');
 
     Route::resource('saleOrder', SaleOrderController::class);
  });

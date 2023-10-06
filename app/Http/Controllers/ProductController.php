@@ -14,6 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(5);
+
         return view('product.index', compact('products'));
     }
 
@@ -34,7 +35,7 @@ class ProductController extends Controller
 
         $anotherProduct = Product::where('category_id', $product->category_id)->take(16)->get();
 
-        return view('product.item', compact('product','anotherProduct'));
+        return view('product.item', compact('product', 'anotherProduct'));
     }
 
     public function create()
@@ -61,24 +62,19 @@ class ProductController extends Controller
         $supervise = $request->input('supervise');
         $supervise_str = implode(',', $supervise);
 
-        $pdf_file = $request->file('pdf_input');
-        $pdf_file->storeAs('public/pdfs', $pdf_file->getClientOriginalName());
+        $product = Product::create([
+            'product_id' => $request->product_id,
+            'product_name' => $request->product_name,
+            'category_id' => $request->category,
+            'brand_id' => $request->brand,
+            'price' => $request->price,
+            'status' => "new",
+            'supervise' => $supervise_str,
+            'guarantee' => $request->guarantee,
+        ]);
 
-        $image_file = time() . '.' . $request->image->extension();
-        $request->image->storeAs('public/images', $image_file);
-
-        $product = new Product;
-        $product->product_id = $request->product_id;
-        $product->product_name = $request->product_name;
-        $product->image = $image_file;
-        $product->category_id = $request->category;
-        $product->brand_id = $request->brand;
-        $product->price = $request->price;
-        $product->status = 'new';
-        $product->datasheet = $pdf_file->getClientOriginalName();
-        $product->supervise = $supervise_str;
-        $product->guarantee = $request->guarantee;
-        $product->save();
+        $product->addMedia($request->file('image'))->usingName($product->product_id)->toMediaCollection('productImages');
+        $product->addMedia($request->file('pdf_input'))->usingName($product->product_id)->toMediaCollection('productDataSheet');
 
         return redirect()->route('product.index');
     }

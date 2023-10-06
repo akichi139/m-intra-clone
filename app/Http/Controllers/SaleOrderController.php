@@ -103,4 +103,11 @@ class SaleOrderController extends Controller
 
         return redirect()->route('confirm_saleOrder', ['saleOrderId' => $saleOrder->id]);
     }
+
+    public function DestroyCart()
+    {
+        Cart::destroy();
+
+        return redirect()->route('welcome');
+    }
 }

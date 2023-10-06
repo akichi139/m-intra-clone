@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('categories_name');
-            $table->boolean('is_category')->comment('company is root');
+            $table->boolean('is_root_category')->comment('category is root');
             $table->nestedSet();
             $table->timestamps();
         });

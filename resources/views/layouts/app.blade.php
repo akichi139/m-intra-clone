@@ -255,276 +255,20 @@
                 CATEGORY
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Industrial measuring and testing tools</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">Accessories สายวัด</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">กล้องตรวจสภาพภายในท่อ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">กล้องถ่ายภาพความร้อน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">กล้องถ่ายภาพเสียงและ Partial Discharge</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องตรวจสอบการรั่วไหลของระบบ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดกำลังไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความต้านทานดิน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความปลอดภัยระบบไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความเร็วรอบ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความเร็วลม</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดค่าความต้านทานต่ำ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดค่าฉนวนไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดคุณภาพอากาศ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดปริมาณฝุ่น</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดระยะและระดับน้ำแบบเลเซอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดลำดับเฟส</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดสนามแม่เหล็ก</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดแสง</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดอัตราการไหล</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">แคลมป์มิเตอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ด้ามวัดไฟแบบไม่สัมผัส</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ดิจิตอลมัลติมิเตอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">อนาลอกมัลติมิเตอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ออสซิลโลสโคป</a>
-                    </li>
-                  </ul>
-                </li>
 
+                @foreach($categories as $category)
                 <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">High precision calibration</a>
+                  <a class="nav-link dropdown-toggle" href="#">{{$category->categories_name}}</a>
                   <ul class="dropdown-menu">
+                    @foreach($category->children as $subCategory)
                     <li>
-                      <a class="dropdown-item" href="#">เครื่องสอบเทียบงานอุตสาหกรรม</a>
+                      <a class="dropdown-item"
+                        href="{{route('category_product', ['category_name' => $subCategory->categories_name])}}">{{$subCategory->categories_name}}</a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องสอบเทียบทางไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องสอบเทียบทางแรงดัน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องสอบเทียบทางอุณหภูมิ</a>
-                    </li>
+                    @endforeach
                   </ul>
                 </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Network testing tools</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องตรวจสอบกล้องวงจรปิด IP/Analog</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบระบบเน็ตเวิร์ค</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบสัญญาณไวไฟ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบสายแลน/ไฟเบอร์</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Analyze sound and vibration</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบการสั่นสะเทือน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบเสียงและการสั่นสะเทือน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดเสียง</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Radio Frequency, Communications and
-                    Telecommunications</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องกำเนิดสัญญาณ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องกำเนิดสัญญาณความถี่วิทยุ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบสายอากาศและสายนำสัญญาณ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องนับความถี่สูงย่านไมโครเวฟ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องนับและวิเคราะห์ความถี่</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดกำลังส่งคลื่นวิทยุและเพาเวอร์เซ็นเซอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวิเคราะห์สัญญาณโทรทัศน์และดาวเทียม</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวิเคราะห์สายอากาศ</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ชุดจำลองสัญญาณ GPS</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ชุดสร้างความถี่ Clock มาตรฐานควบคุมด้วย GPS</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">สเปกตรัมอนาไลเซอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">อุปกรณ์ลดทอนสัญญาณ</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Tester and Tools</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">AC/DC อิเล็กทรอนิกส์โหลด</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">LCR มิเตอร์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องค้นหาแนวสายเคเบิ้ลและท่อใต้ดิน</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องจ่ายไฟกระแสตรง DC</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องจ่ายไฟกระแสสลับ AC</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบบรรจุภัณฑ์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบไฟฟ้าแรงดันสูง</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องมือช่าง</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องมือในการซ่อมบอร์ด</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความปลอดภัยทางไฟฟ้าของเครื่องใช้ไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความปลอดภัยทางไฟฟ้าของเครื่องมือแพทย์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดหม้อแปลงไฟฟ้า</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวิเคราะห์แบตเตอรี่</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ชุดทดสอบ EMI</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ชุดฝึกสำหรับการศึกษา</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">ชุดทดสอบ Quick ชาร์จเจอร์</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Measure temperature and humidity</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดอุณหภูมิ​/ความชื้น</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดอุณหภูมิในอุตสาหกรรมอาหาร​</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดอุณหภูมิแบบอินฟราเรด</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องให้กำเนิดอุณหภูมิและความชื้นสัมพัทธ์</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Solar and electric vehicles</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดการติดตั้งระบบไฟฟ้าพลังงานแสงอาทิตย์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวัดความปลอดภัยการติดตั้งสถานีชาร์จรถไฟฟ้า​</a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropend">
-                  <a class="nav-link dropdown-toggle" href="#">Check medical equipment</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องทดสอบเครื่องมือแพทย์</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวิเคราะห์ประสิทธิภาพเครื่องช่วยหายใจ​</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">เครื่องวิเคราะห์ประสิทธิภาพเครื่องวัดสัญญาณชีพ​</a>
-                    </li>
-                  </ul>
-                </li>
+                @endforeach
 
               </ul>
             </li>
@@ -574,6 +318,21 @@
                     aria-label="Search" style="max-width: 100px;">
                 </div>
               </form>
+            </li>
+
+            <li class="nav-item">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" data-bs-display="static" v-pre>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>
+                @livewire('like-count')
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                @livewire('like-component')
+              </div>
             </li>
 
             <li class="nav-item">
@@ -678,7 +437,7 @@
       <div class="col-xs-6 col-md-3">
         <h6>ABOUT US</h6>
         <ul class="footer-links">
-          <li><a href="#">รายละเอียดบริษัท</a></li>
+          <li><a href="{{ route('information') }}">รายละเอียดบริษัท</a></li>
           <li><a href="#">ตัวแทนจำหน่าย</a></li>
           <li><a href="#">ข้อเสนอแนะ</a></li>
           <li><a href="#">สมัครงาน</a></li>

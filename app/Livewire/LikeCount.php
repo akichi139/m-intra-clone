@@ -6,18 +6,18 @@ use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Attributes\On;
 
-class CartCounter extends Component
+class LikeCount extends Component
 {
-    #[On('itemAddedToCart')]
+    #[On('updatelike')]
     public function refresh(){
         $this->getTotalCartItems();
     }
     public function getTotalCartItems()
     {
-        return Cart::instance("cart")->count();
+        return Cart::instance('like')->count();
     }
     public function render()
     {
-        return view('livewire.cart-counter');
+        return view('livewire.like-count');
     }
 }

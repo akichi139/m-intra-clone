@@ -29,7 +29,7 @@ class NavServiceProvider extends ServiceProvider
         });
 
         Cache::remember('categories',86400, function () {
-            return Category::all();
+            return Category::where('is_root_category',true)->get();
         });
     }
 }
