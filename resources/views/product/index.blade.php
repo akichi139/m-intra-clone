@@ -33,14 +33,14 @@
                 <td>{{$product->product_id}}</td>
                 <td>{{$product->product_name}}</td>
                 <td>
-                    <img src="{{ $product->getMedia('productImages')->first()->getUrl() }}" width="100" height="100">
+                    <img src="{{ route('displayImage', [$product->getMedia('productImages')->first()->id, 'filename' => $product->getMedia('productImages')->first()->file_name ]) }}" width="100" height="100">
                 </td>
                 <td>{{$product->Category->categories_name}}</td>
                 <td>{{$product->brand->brand_name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->status}}</td>
                 <td>
-                    <a href="{{ $product->getMedia('productDataSheet')->first()->getUrl() }}" target="_blank">View PDF</a>
+                    <a href="{{ route('displayImage', [$product->getMedia('productDataSheet')->first()->id, 'filename' => $product->getMedia('productDataSheet')->first()->file_name ]) }}" target="_blank">View PDF</a>
                 </td>
                 <td>{{$product->supervise}}</td>
                 <td>{{$product->guarantee}}</td>

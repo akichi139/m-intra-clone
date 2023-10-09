@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Models\Brand;
 
 /*
@@ -18,6 +19,7 @@ use App\Models\Brand;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('private-image/{dir}/{filename}', [ImageController::class, 'displayPrivateImage'])->name('displayImage');
 
 Route::resource('product', ProductController::class);
 

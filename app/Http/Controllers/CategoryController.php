@@ -14,11 +14,11 @@ class CategoryController extends Controller
         return view('Category.index', compact('categories'));
     }
 
-    public function displayCategory($category_id)
+    public function displayCategory($category_name)
     {
         $categorys = Category::all();
         $brands = Brand::all();
-        $category_name = Category::where('id', $category_id)->first();
+        $category_name = Category::where('categories_name', $category_name)->first();
 
         if ($category_name) {
             $products = $category_name->products()->paginate(8);
