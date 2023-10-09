@@ -19,7 +19,7 @@ use App\Models\Brand;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('private-image/{dir}/{filename}', [ImageController::class, 'displayPrivateImage'])->name('displayImage');
+Route::get('private-media/{filename}', [ImageController::class, 'displayPrivateMedia'])->name('displayMedia');
 
 Route::resource('product', ProductController::class);
 

@@ -88,7 +88,7 @@
         <h6 class="text-white">New</h6>
     </div>
     @endif
-    <img class="card-img-top my-3 mx-auto" src="{{ asset('storage/images/' . $product->image) }}"
+    <img class="card-img-top my-3 mx-auto" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
         style="width: 275px;height: 275px; background-color: transparent;">
     <div class="card-body mx-3">
         <div class="d-flex justify-content-between">

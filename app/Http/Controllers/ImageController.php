@@ -7,20 +7,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
-    public function displayPrivateImage($dir,$filename)
+    public function displayPrivateMedia($filename)
     {
-        $path = storage_path("app/media/{$dir}/{$filename}");
+        $filePath = storage_path('app/media/' . $filename);
 
-        if (!file_exists($path)) {
-            abort(404);
+        if (file_exists($filePath)) {
+            $file = Storage::disk('local')->get('media/' . $filename);
+            $type = Storage::disk('local')->mimeType('media/' . $filename);
+
+            return response($file, 200)->header('Content-Type', $type);
         }
 
-        $file = Storage::get($path);
-        $type = Storage::mimeType($path);
-
-        $response = response($file, 200);
-        $response->header("Content-Type", $type);
-
-        return $response;
+        abort(404);
     }
 }
