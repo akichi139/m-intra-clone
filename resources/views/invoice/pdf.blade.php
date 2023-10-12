@@ -68,12 +68,12 @@
                                 </tr>
                             </thead><!-- end thead -->
                             <tbody>
-                                @foreach(json_decode($sale_order->cart_content, true) as $item)
+                                @foreach(json_decode($sale_order->cart_content, true) as $index => $item)
                                 <tr>
-                                    <th class="mx-1" scope="row">01</th>
+                                    <th class="mx-1" scope="row">{{ $index + 1 }}</th>
                                     <td class="mx-1">
                                         <div>
-                                            <p class="text-truncate font-size-14 mb-0"
+                                            <p class="text-truncate mb-0"
                                                 style="font-size: 20px;color: black;font-weight: bold;">{{ $item['name']
                                                 }}</p>
                                             <p class="text-muted mb-0">{{ $item['id'] }}</p>

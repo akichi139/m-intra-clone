@@ -106,7 +106,10 @@ class SaleOrderController extends Controller
 
     public function SaleorderToInvoice($id)
     {
-        Cart::destroy();
+        Cart::instance("cart")->destroy();
+
+        $saleOrder = SaleOrder::find($id);
+        $saleOrder->update(['status' => 2]);
 
         return redirect()->route('pdf',['id' => $id]);
     }
