@@ -75,15 +75,15 @@
                         <div id="carouselExampleControls" class="carousel slide mx-5" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
+                                    <img src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
+                                    <img src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="{{ asset('storage/images/' . $product->image) }}" class="d-block w-100"
+                                    <img src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}" class="d-block w-100"
                                         style="max-width: 500px ;max-height: 500px;border-radius: 5px;">
                                 </div>
                             </div>
@@ -98,17 +98,17 @@
                     <div class="col-10 d-flex justify-content-center mb-3">
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0"
                             class="active mx-2" aria-current="true" aria-label="Slide 1" style="border-radius: 5px;">
-                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                            <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
                                 style="border-radius: 50%;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1"
                             aria-label="Slide 2" style="border-radius: 5px;" class="mx-2">
-                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                            <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
                                 style="border-radius: 50%;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2"
                             aria-label="Slide 3" style="border-radius: 5px;" class="mx-2">
-                            <img class="img-fluid" src="{{ asset('storage/images/' . $product->image) }}"
+                            <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
                                 style="border-radius: 50%;height: 70px; width: 70px;">
                         </button>
                     </div>
@@ -147,8 +147,8 @@
     <div class="card my-2">
         <div class="row d-flex justify-content-center">
             <h2 class="col-12 d-flex justify-content-center">Data Sheet</h2>
-            <iframe src="{{ asset('storage/pdfs/' . $product->datasheet) }}" width="50%" height="600"></iframe>
-            <a class="btn btn-primary my-2 col-12" href="{{ asset('storage/pdfs/' . $product->datasheet) }}"
+            <iframe src="{{ route('displayMedia', ['filename' => $product->getMedia('productDataSheet')->first()->id . $product->getMedia('productDataSheet')->first()->file_name ]) }}" width="50%" height="600"></iframe>
+            <a class="btn btn-primary my-2 col-12" href="{{ route('displayMedia', ['filename' => $product->getMedia('productDataSheet')->first()->id . $product->getMedia('productDataSheet')->first()->file_name ]) }}"
                 target="_blank" style="max-width: 50%;">Download PDF</a>
         </div>
     </div>

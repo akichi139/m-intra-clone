@@ -79,7 +79,7 @@ class SaleOrderController extends Controller
 
         $cart_content = [];
 
-        foreach (Cart::content() as $item) {
+        foreach (Cart::instance("cart")->content() as $item) {
             $cart_content[] = [
                 'id' => $item->id,
                 'name' => $item->name,
@@ -104,10 +104,10 @@ class SaleOrderController extends Controller
         return redirect()->route('confirm_saleOrder', ['saleOrderId' => $saleOrder->id]);
     }
 
-    public function DestroyCart()
+    public function SaleorderToInvoice($id)
     {
         Cart::destroy();
 
-        return redirect()->route('welcome');
+        return redirect()->route('pdf',['id' => $id]);
     }
 }

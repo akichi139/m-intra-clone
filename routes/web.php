@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SaleOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -62,7 +63,9 @@ Route::group(['middleware' => ['admin']], function () {
  Route::group(['middleware' => ['auth']], function () {
     Route::post('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');
     Route::get('/comfirmSaleOrder/{saleOrderId}', [SaleOrderController::class, 'ConfirmSaleOrder'])->name('confirm_saleOrder');
-    Route::get('/destroy_cart', [SaleOrderController::class, 'DestroyCart'])->name('destroy_cart');
+    Route::get('/destroy_cart/{id}', [SaleOrderController::class, 'SaleorderToInvoice'])->name('saleorder_to_invoice');
+
+    Route::get('/pdf/{id}', [PDFController::class, 'pdf'])->name('pdf');
 
     Route::resource('saleOrder', SaleOrderController::class);
  });
