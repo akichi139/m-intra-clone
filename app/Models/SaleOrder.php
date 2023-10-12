@@ -9,6 +9,13 @@ class SaleOrder extends Model
 {
     use HasFactory;
 
+    const STATUS_MAPPING = [
+        'processing' => 0,
+        'shipped' => 1,
+        'invoiced' => 2,
+        'cancelled' => 3,
+    ];
+
     protected $guarded = [];
     public function product()
     {

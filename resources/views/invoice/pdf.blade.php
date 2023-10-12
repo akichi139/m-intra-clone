@@ -19,7 +19,7 @@
             <div class="col-lg-12">
                 <div class="invoice-title">
                     <h4 class="float-end font-size-15">Invoice #{{ $sale_order->id }}
-                        <span class="badge bg-success font-size-12 ms-2">{{ $sale_order->status }}</span>
+                        <span class="badge bg-success font-size-12 ms-2">{{ array_search($sale_order->status, App\Models\SaleOrder::STATUS_MAPPING) }}</span>
                     </h4>
                     <div class="mb-4">
                         <img src="https://v4i.rweb-images.com/www.measuretronix.com/images/logo/large-1658484550269.png"

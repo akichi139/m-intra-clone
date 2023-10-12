@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('cart_content')->nullable();
             $table->string('payment_type');
             $table->string('promo_code');
-            $table->enum('status', ['processing', 'Shipped', 'invoiced', 'cancelled'])->default('processing');
+            $table->integer('status')->default(0);
             $table->integer('cart_item');
             $table->float('subtotal');
             $table->float('tax');

@@ -93,7 +93,7 @@ class SaleOrderController extends Controller
             'cart_content' => json_encode($cart_content),
             'payment_type' => $request->input('payment_type'),
             'promo_code' => $request->input('promotion_code') ?? '-',
-            'status' => 0,
+            'status' => SaleOrder::STATUS_MAPPING['processing'],
             'cart_item' => Cart::count(),
             'subTotal' => Cart::subtotal(2, '.', ''),
             'tax' => Cart::Tax(2, '.', ''),
