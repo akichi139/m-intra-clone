@@ -85,7 +85,7 @@
 
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('saleorder_to_invoice',['id' => $saleOrder->id]) }}" type="button"
-                                    class="btn btn-dark btn-block btn-lg" target="_blank" rel="noopener">
+                                    class="btn btn-dark btn-block btn-lg">
                                     Confirm Sale Order
                                 </a>
                             </div>

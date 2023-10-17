@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Invoice #{{$sale_order->id}}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+@section('content')
+
+<div>
     <style>
-        body {
+        .container {
             font-family: "THSarabunNew";
         }
     </style>
-</head>
-
-<body>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -96,7 +90,8 @@
                                     <th scope="row" colspan="4" class="border-0 text-end">
                                         Discount :</th>
                                     <td class="border-0 text-end">-
-                                        {{ money($sale_order->total-$sale_order->tax-$sale_order->subtotal, 'THB', true)}}
+                                        {{ money($sale_order->total-$sale_order->tax-$sale_order->subtotal, 'THB',
+                                        true)}}
                                     </td>
                                 </tr>
                                 <!-- end tr -->
@@ -121,6 +116,13 @@
             </div><!-- end col -->
         </div>
     </div>
-</body>
+    <div class="row justify-content-center">
+        <a href="{{ route('pdf',['id' => $sale_order->id]) }}" type="button" class="btn btn-dark btn-block btn-lg"
+            target="_blank" rel="noopener">
+            Display on pdf
+        </a>
+    </div>
+</div>
 
-</html>
+
+@endsection

@@ -99,17 +99,17 @@
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0"
                             class="active mx-2" aria-current="true" aria-label="Slide 1" style="border-radius: 5px;">
                             <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
-                                style="border-radius: 50%;height: 70px; width: 70px;">
+                                style="border-radius: 5px;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1"
                             aria-label="Slide 2" style="border-radius: 5px;" class="mx-2">
                             <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
-                                style="border-radius: 50%;height: 70px; width: 70px;">
+                                style="border-radius: 5px;height: 70px; width: 70px;">
                         </button>
                         <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2"
                             aria-label="Slide 3" style="border-radius: 5px;" class="mx-2">
                             <img class="img-fluid" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
-                                style="border-radius: 50%;height: 70px; width: 70px;">
+                                style="border-radius: 5px;height: 70px; width: 70px;">
                         </button>
                     </div>
                     <div class="col-1 d-flex justify-content-end">

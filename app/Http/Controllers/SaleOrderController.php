@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Livewire\CartCounter;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\SaleOrder;
+use Livewire\Livewire;
 
 class SaleOrderController extends Controller
 {
@@ -108,9 +110,9 @@ class SaleOrderController extends Controller
     {
         Cart::instance("cart")->destroy();
 
-        $saleOrder = SaleOrder::find($id);
-        $saleOrder->update(['status' => 2]);
+        $sale_order = SaleOrder::find($id);
+        $sale_order->update(['status' => 2]);
 
-        return redirect()->route('pdf',['id' => $id]);
+        return view('invoice.invoice', compact('sale_order'));
     }
 }

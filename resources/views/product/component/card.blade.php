@@ -89,7 +89,7 @@
     </div>
     @endif
     <img class="card-img-top my-3 mx-auto" src="{{ route('displayMedia', ['filename' => $product->getMedia('productImages')->first()->id . $product->getMedia('productImages')->first()->file_name ]) }}"
-        style="width: 275px;height: 275px; background-color: transparent;">
+        style="width: 260px;height: 260px; background-color: transparent;">
     <div class="card-body mx-3">
         <div class="d-flex justify-content-between">
             <h6 style="color: #8e8e8e;font-weight: bold;">{{ $product->product_id }}</h6>
