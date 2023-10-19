@@ -54,11 +54,11 @@ Route::get('/repairandcal', [CategoryController::class, 'index'])->name('repaira
 Route::get('/quatation', [CategoryController::class, 'index'])->name('quatation');
 Route::get('/aboutus', [CategoryController::class, 'index'])->name('aboutus');
 
-Route::group(['middleware' => ['admin']], function () {
-    // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
+// Route::group(['middleware' => ['admin']], function () {
+//     // Route::get('admin-home', [HomeController::class, 'adminHome'])->name('admin.home');
 
-    // Route::resource('product', ProductController::class);
- });
+//     // Route::resource('product', ProductController::class);
+//  });
 
  Route::group(['middleware' => ['auth']], function () {
     Route::post('/saleOrderFromCart', [SaleOrderController::class, 'cartToSaleOrder'])->name('auth_saleOrder');

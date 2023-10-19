@@ -7,7 +7,7 @@
     }
 
     .product {
-        padding: 5px;
+        padding: 10px;
     }
 
     .span1 {
@@ -105,7 +105,8 @@
                 @foreach($brands as $all_brand)
                 <li>
                     <a class="text-decoration-none link-dark"
-                        href="{{ route('brand_product', ['brand_name' => $all_brand->brand_name]) }}">{{ $all_brand->brand_name
+                        href="{{ route('brand_product', ['brand_name' => $all_brand->brand_name]) }}">{{
+                        $all_brand->brand_name
                         }}</a>
                 </li>
                 @endforeach
@@ -130,13 +131,15 @@
             <div class="row">
                 <span class="span3">Price</span>
                 <div class="col">
-                    <input type="number" id="minValue" class="form-control" name="minValue" placeholder="min" value="{{ $minValue }}">
+                    <input type="number" id="minValue" class="form-control" name="minValue" placeholder="min"
+                        value="{{ $minValue }}">
                 </div>
                 <div class="col-auto">
                     <span>To</span>
                 </div>
                 <div class="col">
-                    <input type="number" id="maxValue" class="form-control" name="maxValue" placeholder="max" value="{{ $maxValue }}">
+                    <input type="number" id="maxValue" class="form-control" name="maxValue" placeholder="max"
+                        value="{{ $maxValue }}">
                 </div>
             </div>
             <div class="row mt-3 mx-2">
@@ -149,16 +152,12 @@
         </div>
 
         <div class="col-9">
-            <div class="d-flex">
-                <div class="d-flex align-content-start flex-wrap">
+            <div class="d-flex flex-wrap justify-content-center">
                     @foreach($products as $product)
                     <div class="product">
-                        <a href="{{ route('product.brand', ['brand' => $brand->brand_name]) }}">
-                            @include('product.component.card')
-                        </a>
+                        @include('product.component.card')
                     </div>
                     @endforeach
-                </div>
             </div>
         </div>
         {!! $products->links('pagination::bootstrap-5') !!}

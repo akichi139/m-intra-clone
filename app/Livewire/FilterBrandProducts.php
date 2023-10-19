@@ -8,39 +8,42 @@ use App\Models\Brand;
 
 class FilterBrandProducts extends Component
 {
-    public $brand_name, $minValue, $maxValue, $brands, $categorys;
+    public $brand, $minValue, $maxValue, $brands, $categorys;
     public $categoryIds = [];
 
     public function mount($brand_name)
     {
-        $this->brand_name = Brand::where('brand_name', $brand_name)->first();
+        $this->brand = Brand::where('brand_name', $brand_name)->first();
+        
+        $this->brands = Brand::all();
+        $this->categorys = Category::where('is_root_category','0')->get();
     }
 
     public function render()
     {
-        dump($this->minValue, $this->maxValue, $this->categoryIds);
-
-        $productsQuery = $this->brand_name->products();
+        $productsQuery = $this->brand->products();
 
         if (!empty($this->categoryIds)) {
             $productsQuery->whereIn('category_id', $this->categoryIds);
         }
 
-        if ($this->minValue !== null && $this->maxValue !== null) {
-            $productsQuery->whereBetween('price', [$this->minValue, $this->maxValue]);
+        if ($this->minValue !== null) {
+            $productsQuery->where('price','>',$this->minValue);
+        }
+
+        if ($this->maxValue !== null) {
+            $productsQuery->where('price','<',$this->maxValue);
         }
 
         $products = $productsQuery->paginate(6);
 
-        $this->brands = Brand::all();
-        $this->categorys = Category::all();
-
-        return view('livewire.filter-brand-products', compact('products'));
+        return view('livewire.filter-brand-products',compact('products'));
     }
 
     public function filterProducts()
     {
-        $this->rules();
+        $this->minValue = $this->minValue ?: 0;
+        $this->maxValue = $this->maxValue ?: 100000;
     }
 
     public function clearFilters()

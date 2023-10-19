@@ -30,14 +30,18 @@ class BrandController extends Controller
             $productsQuery->whereIn('category_id', $categoryIds_array);
         }
 
-        if ($minValue !== null && $maxValue !== null) {
-            $productsQuery->whereBetween('price', [$minValue, $maxValue]);
+        if ($minValue !== null) {
+            $productsQuery->where('price','>',$minValue);
+        }
+
+        if ($maxValue !== null) {
+            $productsQuery->where('price','<', $maxValue);
         }
 
         $products = $productsQuery->paginate(6);
 
         $brands = Brand::all();
-        $categories = Category::all();
+        $categories = Category::where('is_root_category','0')->get();
 
         return view('brand.brandProduct',compact('brand', 'brands', 'categories', 'products', 'categoryIds', 'minValue', 'maxValue'));
     }

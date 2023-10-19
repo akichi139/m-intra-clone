@@ -20,13 +20,13 @@ class BrandSeeder extends Seeder
         ["brand_name" => "AOK",
         "logo" => "https://gewebenetzwerk.de/wp-content/uploads/2022/05/AOK-Logo-Vertikal-gruen.png",],
         ["brand_name" => "Battery-Metric(Lamantia)",
-        "logo" => "test",],
+        "logo" => "https://www.batterymetric.com/wp-content/uploads/SBannerTop2c.png",],
         ["brand_name" => "BC-Biomedical",
-        "logo" => "test",],
+        "logo" => "https://www.bcgroupintl.com/images/BC_BIOMEDICAL_Logo.png",],
         ["brand_name" => "Bird",
-        "logo" => "test",],
+        "logo" => "https://upload.wikimedia.org/wikipedia/commons/4/4e/Birdrf-Logo2.jpg",],
         ["brand_name" => "BK-Precision/Sefram",
-        "logo" => "test",],
+        "logo" => "https://ce8dc832c.cloudimg.io/cdn/n/n@bb2877491c3d9e476c0e9071267213057178daf0/_cs_/2020/11/5fb797e827ca7/b_k_precision_1200.png",],
         ["brand_name" => "Bruel&Kjaer",
         "logo" => "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Bruel%26Kjaer_Logo.jpg/1200px-Bruel%26Kjaer_Logo.jpg",]
         ];

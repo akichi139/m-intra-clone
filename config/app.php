@@ -168,6 +168,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         Livewire\LivewireServiceProvider::class,
         App\Providers\NavServiceProvider::class,

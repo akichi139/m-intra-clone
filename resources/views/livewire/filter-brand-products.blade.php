@@ -79,7 +79,7 @@
 </style>
 
 <div>
-    <img src="{{ $brand_name->logo }}" style="width: 200px;height: 100px;">
+    <img src="{{ $brand->logo }}" style="width: 200px;height: 100px;">
     <hr>
 
     <div class="row">
@@ -92,40 +92,46 @@
                 @foreach($brands as $brand)
                 <li>
                     <a class="text-decoration-none link-dark"
-                        href="{{ route('brand_product', ['brand_name' => $brand->brand_name]) }}">{{ $brand->brand_name
+                        href="{{ route('brand_product', ['brand_name' => '$brand->brand_name']) }}">{{ $brand->brand_name
                         }}</a>
                 </li>
                 @endforeach
             </ul>
             <hr>
-            <label for="touch2">
-                <span class="span2">Categories ⮟</span>
-            </label>
-            <input type="checkbox" id="touch2">
-            <ul class="slide2">
-                @foreach($categorys as $category)
-                <li>
-                    <label>
-                        <input type="checkbox" wire:model.live="categoryIds" value="{{ $category->id }}">
-                        {{ $category->categories_name }}
-                    </label>
-                </li>
-                @endforeach
-            </ul>
-            <hr>
-            <div class="row">
-                <span class="span3">Price</span>
-                <div class="col">
-                    <input type="number" class="form-control" wire:model.live="minValue" name="minValue" placeholder="min">
+            <form wire:submit="filterProducts">
+                <label for="touch2">
+                    <span class="span2">Categories ⮟</span>
+                </label>
+                <input type="checkbox" id="touch2">
+                <ul class="slide2">
+                    @foreach($categorys as $category)
+                    <li>
+                        <label>
+                            <input type="checkbox" wire:model="categoryIds" value="{{ $category->id }}">
+                            {{ $category->categories_name }}
+                        </label>
+                    </li>
+                    @endforeach
+                </ul>
+                <hr>
+                <div class="row">
+                    <span class="span3">Price</span>
+                    <div class="col">
+                        <input type="number" class="form-control" wire:model="minValue" name="minValue"
+                            placeholder="min">
+                    </div>
+                    <div class="col-auto">
+                        <span>To</span>
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" wire:model="maxValue" name="maxValue"
+                            placeholder="max">
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <span>To</span>
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" wire:model.live="maxValue" name="maxValue" placeholder="max">
-                </div>
-            </div>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
             {{$minValue}} to {{$maxValue}}
+            <button class="btn btn-secondary" wire:click="clearFilters">Clear Filters</button>
         </div>
 
         <div class="col-9">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends Model
@@ -12,8 +13,13 @@ class Category extends Model
     use NodeTrait;
 
     protected $guarded = [];
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 }
