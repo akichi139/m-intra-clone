@@ -31,7 +31,16 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\ToggleColumn::make('is_admin')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -45,14 +54,14 @@ class UserResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -60,5 +69,5 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }    
+    }
 }

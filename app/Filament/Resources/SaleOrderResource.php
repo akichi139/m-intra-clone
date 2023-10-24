@@ -6,6 +6,7 @@ use App\Filament\Resources\SaleOrderResource\Pages;
 use App\Filament\Resources\SaleOrderResource\RelationManagers;
 use App\Models\SaleOrder;
 use App\Tables\Columns\CartContent;
+use App\Tables\Columns\SaleOrderStatus;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,6 +20,13 @@ class SaleOrderResource extends Resource
     protected static ?string $model = SaleOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+
+    protected static array $status = [
+        'processing' => 0,
+        'shipped' => 1,
+        'invoiced' => 2,
+        'cancelled' => 3,
+    ];
 
     public static function form(Form $form): Form
     {
@@ -37,12 +45,16 @@ class SaleOrderResource extends Resource
                     ->searchable(),
                 CartContent::make('cart_content'),
                 Tables\Columns\TextColumn::make('payment_type'),
-                Tables\Columns\TextColumn::make('promo_code'),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('user_id')->searchable(),
+                Tables\Columns\TextColumn::make('subtotal')->money('THB'),
+                Tables\Columns\TextColumn::make('tax')->money('THB')->label('tax (7%)'),
+                Tables\Columns\TextColumn::make('total')->money('THB'),
+                SaleOrderStatus::make('status'),
+                Tables\Columns\TextColumn::make('user.name')
+                ->label('customer')
+                ->searchable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('customer')->relationship('user', 'name'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
