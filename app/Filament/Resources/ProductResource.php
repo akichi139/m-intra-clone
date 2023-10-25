@@ -30,36 +30,52 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('product_name')
                     ->maxLength(255)
                     ->required(),
-                Forms\Components\FileUpload::make('picture')
+                Forms\Components\SpatieMediaLibraryFileUpload::make('picture')
                     ->image()
                     ->multiple()
                     ->maxFiles(5)
                     ->disk('media')
-                    ->directory('product')
-                    ->visibility('private')
+                    ->conversionsDisk('media')
+                    ->collection('productImages')
                     ->required(),
-                Forms\Components\FileUpload::make('datasheet')
+                // Forms\Components\FileUpload::make('picture')
+                //     ->image()
+                //     ->multiple()
+                //     ->maxFiles(5)
+                //     ->disk('media')
+                //     ->directory('product')
+                //     ->visibility('private')
+                //     ->required(),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('datasheet')
                     ->acceptedFileTypes(['application/pdf'])
                     ->disk('media')
-                    ->directory('datasheet')
-                    ->visibility('private')
+                    ->conversionsDisk('media')
+                    ->collection('productDataSheet')
                     ->required(),
-                Forms\Components\Select::make('category')
+                // Forms\Components\FileUpload::make('datasheet')
+                //     ->acceptedFileTypes(['application/pdf'])
+                //     ->disk('media')
+                //     ->directory('datasheet')
+                //     ->visibility('private')
+                //     ->required(),
+                Forms\Components\Select::make('category_id')
+                    ->label('category')
                     ->relationship('category', 'categories_name', fn(Builder $query) =>
                         $query->where('is_root_category', 0))
                     ->searchable()
                     ->preload()
                     ->required(),
-                Forms\Components\Select::make('brand')
+                Forms\Components\Select::make('brand_id')
+                    ->label('brand')
                     ->relationship('brand', 'brand_name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->numeric()
-                    ->minValue(1)
+                    ->minValue(0)
                     ->required(),
-                Forms\Components\Select::make('type')
+                Forms\Components\Select::make('status')
                     ->options([
                         'new' => 'new',
                         'out of stock' => 'out of stock',

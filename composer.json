@@ -12,6 +12,7 @@
         "akaunting/laravel-money": "^5.1",
         "barryvdh/laravel-dompdf": "^2.0",
         "filament/filament": "^3.0-stable",
+        "filament/spatie-laravel-media-library-plugin": "^3.0-stable",
         "guzzlehttp/guzzle": "^7.2",
         "hardevine/shoppingcart": "^3.2",
         "kalnoy/nestedset": "^6.0",

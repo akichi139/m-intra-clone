@@ -26,11 +26,15 @@ class BrandResource extends Resource
                 Forms\Components\TextInput::make('brand_name')
                     ->maxLength(255)
                     ->required(),
+                // Forms\Components\SpatieMediaLibraryFileUpload::make('logo')
+                //     ->image()
+                //     ->conversionsDisk('public')
+                //     ->collection('brand_logo')
+                //     ->required(),
                 Forms\Components\FileUpload::make('logo')
                     ->image()
                     ->disk('public')
                     ->directory('logo')
-                    ->required(),
             ]);
     }
 
@@ -40,6 +44,8 @@ class BrandResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('brand_name')
                     ->searchable(),
+                // Tables\Columns\SpatieMediaLibraryImageColumn::make('logo')
+                //     ->collection('brand_logo'),
                 Tables\Columns\ImageColumn::make('logo')
                     ->disk('public'),
             ])
