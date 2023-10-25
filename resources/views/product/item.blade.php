@@ -137,7 +137,14 @@
                         <li>They're linked to a lowest risk of diabetes</li>
                     </ul>
                     <h6>Guarantee: {{$product->guarantee}}</h6>
-                    <h6>Supervise: {{$product->supervise}}</h6>
+                    <h6>Supervise: 
+                        @foreach($supervisors as $supervisor)
+                        <a style="text-decoration: none" href="#" target="_blank">{{ $supervisor->name }}</a>
+                        @if (!$loop->last)
+                            ,
+                        @endif
+                        @endforeach
+                    </h6>
                 </div>
                 @livewire('add-item-to-cart', ['product_id' => $product->product_id, 'product_name' =>
                 $product->product_name, 'product_price' => $product->price])

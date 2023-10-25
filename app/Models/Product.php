@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,13 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $guarded = [];
+
+    protected function supervise(): Attribute{
+        return Attribute::make(
+            get: fn ($value) => $value,
+            set: fn ($value) => implode(',', $value),
+        );
+    }
 
     public function category() : BelongsTo
     {
@@ -30,7 +38,7 @@ class Product extends Model implements HasMedia
         return $this->belongsToMany(SaleOrder::class, 'product_saleorder');
     }
 
-    public function supervise() : BelongsTo
+    public function supervisor() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }

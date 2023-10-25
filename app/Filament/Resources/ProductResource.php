@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -38,26 +39,12 @@ class ProductResource extends Resource
                     ->conversionsDisk('media')
                     ->collection('productImages')
                     ->required(),
-                // Forms\Components\FileUpload::make('picture')
-                //     ->image()
-                //     ->multiple()
-                //     ->maxFiles(5)
-                //     ->disk('media')
-                //     ->directory('product')
-                //     ->visibility('private')
-                //     ->required(),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('datasheet')
                     ->acceptedFileTypes(['application/pdf'])
                     ->disk('media')
                     ->conversionsDisk('media')
                     ->collection('productDataSheet')
                     ->required(),
-                // Forms\Components\FileUpload::make('datasheet')
-                //     ->acceptedFileTypes(['application/pdf'])
-                //     ->disk('media')
-                //     ->directory('datasheet')
-                //     ->visibility('private')
-                //     ->required(),
                 Forms\Components\Select::make('category_id')
                     ->label('category')
                     ->relationship('category', 'categories_name', fn(Builder $query) =>
@@ -82,24 +69,8 @@ class ProductResource extends Resource
                         'sale' => 'sale',
                     ])
                     ->required(),
-                Forms\Components\Select::make('supervise')
-                    ->relationship('supervise', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->createOptionForm([
-                        Forms\Components\TextInput::make('name')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('email')
-                            ->label('Email address')
-                            ->email()
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('phone')
-                            ->label('Phone number')
-                            ->tel()
-                            ->required(),
-                    ])
+                Forms\Components\MultiSelect::make('supervise')
+                    ->options(User::where('is_admin',true)->pluck('name','id'))
                     ->required(),
                 Forms\Components\TextInput::make('guarantee')
                     ->numeric()
@@ -130,7 +101,8 @@ class ProductResource extends Resource
                         'out of stock' => 'danger',
                         'sale' => 'warning'
                     }),
-                Tables\Columns\TextColumn::make('supervise'),
+                Tables\Columns\TextColumn::make('supervise.name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('guarantee'),
             ])
             ->filters([

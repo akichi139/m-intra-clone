@@ -33,9 +33,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        $anotherProduct = Product::where('category_id', $product->category_id)->take(16)->get();
+        $anotherProduct = Product::where('category_id', $product->category_id)->where('product_id','!=',$product->product_id)->take(16)->get();
 
-        return view('product.item', compact('product', 'anotherProduct'));
+        $supervisorIds = explode(',', $product->supervise);
+
+        $supervisors = User::whereIn('id', $supervisorIds)->get();
+
+        return view('product.item', compact('product', 'anotherProduct','supervisors'));
     }
 
     public function create()
