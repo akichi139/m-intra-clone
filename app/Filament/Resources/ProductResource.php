@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use App\Models\User;
+use App\Tables\Columns\SuperviseName;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -101,8 +102,7 @@ class ProductResource extends Resource
                         'out of stock' => 'danger',
                         'sale' => 'warning'
                     }),
-                Tables\Columns\TextColumn::make('supervise.name')
-                    ->searchable(),
+                SuperviseName::make('supervise'),
                 Tables\Columns\TextColumn::make('guarantee'),
             ])
             ->filters([

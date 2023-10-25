@@ -35,9 +35,7 @@ class ProductController extends Controller
 
         $anotherProduct = Product::where('category_id', $product->category_id)->where('product_id','!=',$product->product_id)->take(16)->get();
 
-        $supervisorIds = explode(',', $product->supervise);
-
-        $supervisors = User::whereIn('id', $supervisorIds)->get();
+        $supervisors = User::whereIn('id', $product->supervise)->get();
 
         return view('product.item', compact('product', 'anotherProduct','supervisors'));
     }

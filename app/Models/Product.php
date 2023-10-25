@@ -18,7 +18,7 @@ class Product extends Model implements HasMedia
 
     protected function supervise(): Attribute{
         return Attribute::make(
-            get: fn ($value) => $value,
+            get: fn ($value) => explode(',', $value),
             set: fn ($value) => implode(',', $value),
         );
     }
