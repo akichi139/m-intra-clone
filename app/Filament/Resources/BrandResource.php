@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BrandResource\Pages;
 use App\Filament\Resources\BrandResource\RelationManagers;
 use App\Models\Brand;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,12 +14,24 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BrandResource extends Resource
+class BrandResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+            'publish'
+        ];
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -26,11 +39,6 @@ class BrandResource extends Resource
                 Forms\Components\TextInput::make('brand_name')
                     ->maxLength(255)
                     ->required(),
-                // Forms\Components\SpatieMediaLibraryFileUpload::make('logo')
-                //     ->image()
-                //     ->conversionsDisk('public')
-                //     ->collection('brand_logo')
-                //     ->required(),
                 Forms\Components\FileUpload::make('logo')
                     ->image()
                     ->disk('public')
@@ -44,8 +52,6 @@ class BrandResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('brand_name')
                     ->searchable(),
-                // Tables\Columns\SpatieMediaLibraryImageColumn::make('logo')
-                //     ->collection('brand_logo'),
                 Tables\Columns\ImageColumn::make('logo')
                     ->disk('public'),
             ])

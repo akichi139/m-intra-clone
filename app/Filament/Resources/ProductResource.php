@@ -7,6 +7,7 @@ use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use App\Models\User;
 use App\Tables\Columns\SuperviseName;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,11 +17,24 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ProductResource extends Resource
+class ProductResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+            'publish'
+        ];
+    }
 
     public static function form(Form $form): Form
     {

@@ -7,6 +7,7 @@ use App\Filament\Resources\SaleOrderResource\RelationManagers;
 use App\Models\SaleOrder;
 use App\Tables\Columns\CartContent;
 use App\Tables\Columns\SaleOrderStatus;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,11 +16,24 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SaleOrderResource extends Resource
+class SaleOrderResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = SaleOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+            'publish'
+        ];
+    }
 
     protected static array $status = [
         'processing' => 0,
