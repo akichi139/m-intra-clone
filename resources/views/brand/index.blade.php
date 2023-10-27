@@ -30,9 +30,7 @@
                 <div class="d-flex align-content-start flex-wrap">
                     @foreach($brands as $brand)
                     <div class="brand">
-                        <a href="{{route('brand_product', ['brand_name' => '$brand->brand_name'])}}">
-                            @include('brand.component.card')
-                        </a>
+                        @include('brand.component.card')
                     </div>
                     @endforeach
                 </div>

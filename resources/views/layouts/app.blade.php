@@ -459,7 +459,7 @@
     <div class="row">
       <div class="col-md-8 col-sm-6 col-xs-12">
         <p class="copyright-text">Copyright &copy; 2008 Measuretronix |
-          <a href="#">privacy policy</a>
+          <a href="{{ route('privacy') }}">privacy policy</a>
         </p>
       </div>
 

@@ -49,6 +49,11 @@ Route::get('/information', function () {
     return view('about.information');
 })->name('information');
 
+Route::get('/privacy', function (){
+    return view('about.privacy-policy');
+})->name('privacy');
+
+
 Route::get('/promotion', [CategoryController::class, 'index'])->name('promotion');
 Route::get('/repairandcal', [CategoryController::class, 'index'])->name('repairandcal');
 Route::get('/quatation', [CategoryController::class, 'index'])->name('quatation');

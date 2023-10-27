@@ -40,8 +40,12 @@ class BrandController extends Controller
 
         $products = $productsQuery->paginate(6);
 
+        $brandId = $brand->id;
+
         $brands = Brand::all();
-        $categories = Category::where('is_root_category','0')->get();
+        $categories = Category::whereHas('products', function($query) use ($brandId) {
+            $query->where('brand_id', $brandId);
+        })->get();
 
         return view('brand.brandProduct',compact('brand', 'brands', 'categories', 'products', 'categoryIds', 'minValue', 'maxValue'));
     }

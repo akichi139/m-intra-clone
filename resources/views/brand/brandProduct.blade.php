@@ -92,7 +92,7 @@
 <div class="mx-auto" style="max-width: 80%;">
     {{-- @livewire('filter-brand-products', ['brand_name' => $brand->brand_name]) --}}
 
-    <img src="{{ $brand->logo }}" style="height: 100px;max-width: 50%;">
+    <img src="{{ asset('storage/'. $brand->logo) }}" style="height: 100px;max-width: 50%;">
     <hr>
 
     <div class="row">

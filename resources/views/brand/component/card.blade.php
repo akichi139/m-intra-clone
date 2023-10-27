@@ -33,7 +33,7 @@
 </style>
 
 <div class="card mx-auto my-2" style="width: 200px;height: 200px; background-color: transparent;">
-    <a>
-        <img class="card-body" src="{{ $brand->logo }}" style="width: 200px;height: 200px;">
+    <a href="{{route('brand_product', ['brand_name' => $brand->brand_name])}}">
+        <img class="card-body" src="{{ asset('storage/'. $brand->logo) }}" style="width: 200px;height: 200px;">
     </a>
 </div>
